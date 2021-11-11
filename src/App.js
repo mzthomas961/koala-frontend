@@ -7,7 +7,8 @@ function App() {
   const [color,setColor] = useState('white')
   const [stickiesArr,setStickiesArr] = useState([])
   const URL = 'http://localhost:3000/stickies'
-  console.log(stickiesArr)
+  const [text,setText] = useState("")
+  console.log(text)
 
 //Fetches
   useEffect(() => {
@@ -17,6 +18,25 @@ function App() {
         setStickiesArr(stickies)
     })
 },[]);
+
+//handlers
+function handleStickyPost(e){
+  e.preventDefault()
+  const data ={
+    text:text
+  };
+
+fetch(URL, {
+  method: 'POST',
+  headers:{
+    "Content-Type":"application/json",
+  },
+  body: JSON.stringify(data),
+
+})
+.then((r)=>r.json())
+
+}
 
 const stickiesComponents = stickiesArr.map((sticky) => {
   return(
@@ -35,6 +55,10 @@ const stickiesComponents = stickiesArr.map((sticky) => {
 
     <div className="canvas">
       {stickiesComponents}
+      <form className="new-form" onSubmit={handleStickyPost}>
+      <input placeholder="type here" value={text} onChange={(e) => setText(e.target.value)}/>
+      <button variant="light" type="submit">submit!</button>
+      </form>
    
     </div>
   );

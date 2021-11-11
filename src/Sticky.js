@@ -4,7 +4,7 @@ function Sticky({text,id,URL}){
     console.log(id)
 
     function handleDelete(e){
-        fetch('http://localhost:3000/stickies/1',{
+        fetch( `${URL}/${id}`,{
             method:'DELETE'
         })
     }
