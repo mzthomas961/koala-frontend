@@ -53,11 +53,12 @@ const stickiesComponents = stickiesArr.map((sticky) => {
   
   return (
 
-    <div className="canvas">
+    <div onClick={handleStickyPost} className="canvas">
       {stickiesComponents}
       <form className="new-form" onSubmit={handleStickyPost}>
       <input placeholder="type here" value={text} onChange={(e) => setText(e.target.value)}/>
       <button variant="light" type="submit">submit!</button>
+
       </form>
    
     </div>

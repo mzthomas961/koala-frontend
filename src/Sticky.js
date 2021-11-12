@@ -11,7 +11,7 @@ function Sticky({text,id,URL}){
         
     
     return(
-        <div>
+        <div className="sticky">
             <p><b>{text}</b></p>
             <button onClick ={handleDelete}>Delete</button>
         </div>
